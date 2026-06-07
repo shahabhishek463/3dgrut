@@ -169,7 +169,7 @@ class Playground:
 
     def update_data_on_device(self, buffer, tensor_array):
         if self.ps_buffer_mode == "host2device":
-            buffer.update_data(tensor_array.detach().cpu().numpy())
+            buffer.update_data(np.asfortranarray(tensor_array.detach().cpu().numpy().astype(np.float32)))
         else:
             buffer.update_data_from_device(tensor_array.detach())
 
