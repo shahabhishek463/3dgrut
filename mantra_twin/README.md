@@ -90,3 +90,10 @@ This writes the following into `/data/office_scan/final/`:
   median of **7–46 mm**.
 - 212 keyframes were picked from 1700 frames.
 - The crop box removed everything above the floor inside it.
+- **Inside the devcontainer** (RTX 3060, driver 580, CUDA 12.8, torch 2.8):
+  - `build_twin.sh` took 1 min.
+  - `train_splat.sh ... 3000` ran at 23 it/s (128 s) and gave a test PSNR of 19.6 dB. That's only 3k steps on 640×480
+    sample images, so 30k steps on the OAK's 1080p should take about 25 min on the 3060.
+  - The **splat lands on the collider**: the median distance from a Gaussian to the mesh is 1.4 cm.
+  - `office_twin_scene.usda` has identity transforms, Z up and metres.
+- Files written from the container are owned by root on the host. To clean up, run `sudo chown -R $USER ~/Robotics/data`.
