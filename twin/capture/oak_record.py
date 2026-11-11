@@ -1,5 +1,5 @@
 """Record one scan zone as an Open3D RGB-D dataset: color/*.jpg, depth/*.png (uint16 mm), intrinsic.json.
-Colour 1080p, depth 720p; live GPU map + live_cloud.ply unless --no-live-map. Usage: python oak_record.py <zone>."""
+Colour 1080p, depth 720p; live GPU map + live_cloud.ply unless --no-live-map. Usage: python twin/capture/oak_record.py <zone>."""
 import argparse
 import json
 import time
@@ -10,7 +10,7 @@ import cv2
 import depthai as dai
 import numpy as np
 
-from oak_common import H, W, ir_on, build_pipeline, lens_position, write_intrinsic
+from twin.capture.oak_common import H, W, ir_on, build_pipeline, lens_position, write_intrinsic
 
 
 def main():
@@ -37,7 +37,7 @@ def main():
         K = write_intrinsic(dev, root)
         live = None
         if not a.no_live_map:
-            from live_map import LiveMap
+            from twin.capture.live_map import LiveMap
             live = LiveMap(K, H, W)
             print(f"live map on {live.device}")
         print(f"IR dot projector {'on' if ir_on(dev) else 'not available'}")

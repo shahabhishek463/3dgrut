@@ -1,5 +1,5 @@
 {
-  "name": "3dgrut — PI-3 office twin (GPU + OAK-D)",
+  "name": "3dgrut — PI-3 office twin (COLMAP + 3DGRUT + OAK-D)",
   "dockerComposeFile": ["docker-compose.devcontainer.yaml"],
   "initializeCommand": "bash ${localWorkspaceFolder}/.devcontainer/build-images.sh",
   "service": "twin",

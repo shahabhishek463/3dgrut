@@ -1,5 +1,5 @@
 """Write office_twin.usd: coloured visual mesh (no physics) + invisible static triangle-mesh collider. Z-up, metres.
-Usage: python mantra_twin/mesh_to_usd.py <final_dir> [--name office_twin]"""
+Usage: python twin/collision/mesh_to_usd.py <final_dir> [--name office_twin]"""
 import argparse
 from pathlib import Path
 

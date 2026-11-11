@@ -1,5 +1,5 @@
 """Scale check: Shift+click two points (e.g. the ends of the 1 m tape mark), close the window, read the distance.
-Usage: python mantra_twin/measure.py <mesh.ply> [--expect 1.0]"""
+Usage: python twin/collision/measure.py <mesh.ply> [--expect 1.0]"""
 import argparse
 
 import numpy as np

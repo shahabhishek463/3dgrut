@@ -1,5 +1,5 @@
 """Per-zone dense RGB-D SLAM (Open3D t.pipelines.slam, CUDA): poses.npy, mesh.ply, cloud.ply in the zone folder.
-Usage: python mantra_twin/reconstruct.py /data/office_scan/<zone> [--voxel 0.015] [--show]"""
+Usage: python twin/slam/reconstruct.py /data/office_scan/<zone> [--voxel 0.015] [--show]"""
 import argparse
 import json
 import time

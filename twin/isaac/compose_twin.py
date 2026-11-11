@@ -1,5 +1,5 @@
 """office_twin_scene.usda: the NuRec splat (what you see) + the static collider (what robots hit), one frame, Z up, metres.
-Usage: python mantra_twin/compose_twin.py <final_dir>   (needs office_twin.usd and office_splat.usdz there)"""
+Usage: python twin/isaac/compose_twin.py <final_dir>   (needs office_twin.usd and office_splat.usdz there)"""
 import argparse
 from pathlib import Path
 

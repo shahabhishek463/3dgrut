@@ -1,5 +1,5 @@
 """Register zones to the first one (FPFH+RANSAC, then colored ICP) and re-fuse every frame into one TSDF.
-Usage: python mantra_twin/merge_zones.py <out_dir> <zone1> <zone2> ... [--voxel 0.015]; writes fused.ply + zones.json"""
+Usage: python twin/slam/merge_zones.py <out_dir> <zone1> <zone2> ... [--voxel 0.015]; writes fused.ply + zones.json"""
 import argparse
 import json
 from pathlib import Path
@@ -8,7 +8,7 @@ import numpy as np
 import open3d as o3d
 import open3d.core as o3c
 
-from reconstruct import frame_files, load_color, load_intrinsic
+from twin.slam.reconstruct import frame_files, load_color, load_intrinsic
 
 
 def prep(pcd, v):

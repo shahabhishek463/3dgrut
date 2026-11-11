@@ -1,5 +1,5 @@
 """OAK-D link check: USB speed, calibration, fps and invalid-depth share over N seconds.
-Usage: python mantra_twin/oak_check.py [--seconds 10] [--show]"""
+Usage: python twin/capture/oak_check.py [--seconds 10] [--show]"""
 import argparse
 import time
 
@@ -7,7 +7,7 @@ import cv2
 import depthai as dai
 import numpy as np
 
-from oak_common import ir_on, H, W, build_pipeline, lens_position
+from twin.capture.oak_common import ir_on, H, W, build_pipeline, lens_position
 
 
 def main():

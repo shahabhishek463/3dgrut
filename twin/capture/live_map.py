@@ -7,7 +7,7 @@ import cv2
 import numpy as np
 import open3d as o3d
 
-from reconstruct import Tracker
+from twin.slam.reconstruct import Tracker
 
 
 class LiveMap:

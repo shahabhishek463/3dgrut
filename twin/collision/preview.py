@@ -1,5 +1,5 @@
 """Quick look without a display: top view (colour) + front view (height-coded) PNG of a mesh.
-Usage: python mantra_twin/preview.py <mesh.ply> <out.png>"""
+Usage: python twin/collision/preview.py <mesh.ply> <out.png>"""
 import sys
 
 import cv2

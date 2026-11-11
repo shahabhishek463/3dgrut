@@ -1,5 +1,5 @@
 """Level a scan (floor -> z=0, main wall -> X axis), drop floating junk, write visual + collision meshes.
-Usage: python mantra_twin/finalize.py <mesh.ply> <out_dir> [--visual-tris 300000] [--collision-tris 30000]"""
+Usage: python twin/collision/finalize.py <mesh.ply> <out_dir> [--visual-tris 300000] [--collision-tris 30000]"""
 import argparse
 import json
 from pathlib import Path
