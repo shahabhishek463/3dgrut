@@ -101,4 +101,10 @@ export writes a broken reference (`CLAUDE.md` §3).
     at 1080p should take about 25 min;
   - the **splat lands on the collider**: the median distance from a Gaussian to the mesh is 1.4 cm;
   - `office_twin_scene.usda` has identity transforms, Z up and metres.
+- **COLMAP route** (combined image, COLMAP 4.1 + CUDA; full `build_twin.sh` took 1 min 20 s):
+  - COLMAP registered **212 of 212** keyframes.
+  - `model_aligner` onto the OAK positions left a median error of 5.5 cm and 1.7° (p90 17 cm and 7°).
+  - 3DGUT at 3k steps gave a **test PSNR of 23.5 dB, against 19.6 dB on the SLAM poses**.
+  - The splat sits a median 3.6 cm from the collider (80% within 8.5 cm). On the SLAM poses it's 1.4 cm.
+  - So the blog's route gives the sharper splat, and the SLAM route stays as the fallback.
 - Files written from the container are owned by root on the host. To clean up, run `sudo chown -R $USER ~/Robotics/data`.

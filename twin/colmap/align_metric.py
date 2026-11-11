@@ -13,7 +13,7 @@ from threedgrut.datasets.utils import qvec_to_so3, read_colmap_extrinsics_binary
 
 def centres_and_rotations(images_bin: Path):
     out = {}
-    for im in read_colmap_extrinsics_binary(str(images_bin)).values():
+    for im in read_colmap_extrinsics_binary(str(images_bin)):
         R = qvec_to_so3(im.qvec)
         out[im.name] = (-R.T @ np.asarray(im.tvec), R.T)  # camera centre, camera-to-world rotation
     return out
