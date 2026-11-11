@@ -1,0 +1,23 @@
+{
+  "name": "3dgrut — PI-3 office twin (GPU + OAK-D)",
+  "dockerComposeFile": ["docker-compose.devcontainer.yaml"],
+  "initializeCommand": "bash ${localWorkspaceFolder}/.devcontainer/build-images.sh",
+  "service": "twin",
+  "workspaceFolder": "/workspace/3dgrut",
+  "postCreateCommand": "git config --global --add safe.directory /workspace/3dgrut && git submodule update --init --recursive",
+  "overrideCommand": false,
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/3dgrut/.venv/bin/python"
+      }
+    }
+  }
+}

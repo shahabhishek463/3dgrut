@@ -1,0 +1,63 @@
+name: 3dgrut-twin-devcontainer
+
+# The PI-3 twin container: GPU, the OAK-D over USB, X11 windows, scans under ~/Robotics/data (host) = /data.
+services:
+  twin:
+    image: 3dgrut-twin
+    container_name: 3dgrut-twin
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - XAUTHORITY=/root/.Xauthority
+      - QT_X11_NO_MITSHM=1
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      - type: bind
+        source: ../
+        target: /workspace/3dgrut
+      - type: bind
+        source: ${HOME}/Robotics/data
+        target: /data
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+      - type: bind
+        source: /tmp/.docker.xauth
+        target: /root/.Xauthority
+      # The OAK re-enumerates (bootloader -> app) after boot: the whole USB tree, not one device node.
+      - type: bind
+        source: /dev/bus/usb
+        target: /dev/bus/usb
+      - torch-extensions:/root/.cache/torch_extensions
+    network_mode: host
+    ipc: host
+    privileged: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    entrypoint: bash
+    stdin_open: true
+    tty: true
+
+  # Optional: COLMAP for pose refinement (docker compose --profile colmap run --rm colmap colmap ...).
+  colmap:
+    profiles: ["colmap"]
+    image: colmap/colmap:20260929.8466
+    volumes:
+      - type: bind
+        source: ${HOME}/Robotics/data
+        target: /data
+    working_dir: /data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  torch-extensions:

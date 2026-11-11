@@ -34,3 +34,6 @@ results/
 thirdparty/ncore/
 
 playground/assets/
+
+# host-side venvs never go into the image
+.venv/

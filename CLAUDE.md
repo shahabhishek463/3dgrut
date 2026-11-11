@@ -363,6 +363,15 @@ python playground.py --gs_object ./ckpt_30000.pt --buffer_mode host2device
 
 ---
 
+## 5. PI-3 office twin from the OAK-D Pro (branch `abhishek/pi3-office-twin`, `mantra_twin/README.md`)
+
+- **Devcontainer** (`.devcontainer/`): CUDA 12.8 + torch 2.8 via `install_env_uv.sh` (no conda, no host env) → runs on
+  sm_86 … sm_120 (fixes Known Issue 1 for this path); GPU + OAK-D USB + X11; host `~/Robotics/data` = `/data`.
+- **One scan, both outputs, one frame:** RGB-D SLAM poses → COLMAP text dataset (`to_colmap.py`) → 3DGUT; the depth TSDF
+  → static triangle-mesh collider (`office_twin.usd`). Metric, floor z=0, Z up: no COLMAP scale ambiguity, not upside-down.
+- `compose_twin.py` → `office_twin_scene.usda` = NuRec splat (visual) + collider. Isaac side: isaac-cobot
+  `abhishek/pi3-office-twin` (`fr5_sim.py --office-twin`, `scripts/tools/office_twin_check.py`).
+
 ## Known Issues
 
 ### Issue 1 — Blackwell GPU (RTX 5070 Ti, sm_120) incompatibility
@@ -408,7 +417,7 @@ buffer.update_data(np.asfortranarray(tensor_array.detach().cpu().numpy().astype(
 | USDZ export — export_usd.py (normalized) | ✅ Working | Use `--dataset` for normalizing transform |
 | Isaac Sim rendering (PLY→USDZ) | ✅ Confirmed | NuRec OmniNuRecField renders room at 7k steps |
 | Coordinate system (upside-down) | ⚠️ Partial | Quick: rotate X:180 in Isaac Sim; Perm: apply_coordinate_transform=True |
-| Dense reconstruction for sim | ❌ Pending | Need for robot collision geometry |
+| Dense reconstruction for sim | 🔄 In progress (PI-3) | OAK-D Pro depth → TSDF collider; `mantra_twin/` |
 | Mesa → NVIDIA OpenGL | ⚠️ Partial | Add `--device=/dev/dri` |
-| PyTorch sm_120 (Blackwell) | ❌ Needs fix | Rebuild with PyTorch ≥2.5 + CUDA 12.8 |
+| PyTorch sm_120 (Blackwell) | 🔄 In progress | `.devcontainer/` image: CUDA 12.8 + torch 2.8 |
 | Full interactive GUI (local) | ❌ Pending | Blocked by sm_120 rebuild |
