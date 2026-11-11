@@ -5,7 +5,7 @@ FROM nvidia/cuda:12.8.1-devel-ubuntu24.04
 ENV DEBIAN_FRONTEND=noninteractive LANG=C.UTF-8
 # GL/X11/Qt libs: OpenCV + Open3D windows and the polyscope playground; libusb + udev: the OAK-D over USB.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        git git-lfs curl ca-certificates build-essential ninja-build pkg-config \
+        git git-lfs curl wget ca-certificates build-essential ninja-build pkg-config \
         libgl1 libegl1 libglib2.0-0t64 libgomp1 libx11-6 libxext6 libxrender1 libxi6 libxrandr2 libxinerama1 \
         libxcursor1 libxkbcommon-x11-0 libdbus-1-3 libfontconfig1 libgl1-mesa-dri mesa-utils xauth \
         libusb-1.0-0 usbutils udev \
