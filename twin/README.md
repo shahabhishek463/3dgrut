@@ -1,3 +1,6 @@
+> **Moved (2026-11-12):** this work now lives in its own repo, **[PhysicalAITeam/digital-twin](https://github.com/PhysicalAITeam/digital-twin)**,
+> with 3DGRUT and COLMAP as submodules. This branch is kept only for history; don't develop here.
+
 # twin/: office digital twin, the NVIDIA workflow plus the OAK-D Pro (Jira PI-3)
 
 This follows NVIDIA's [*How to Instantly Render Real-World Scenes in Interactive Simulation*](https://developer.nvidia.com/blog/how-to-instantly-render-real-world-scenes-in-interactive-simulation):
